@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- icon -->
+    <link rel="icon" href="https://img.freepik.com/premium-vector/wing-icon_861234-2160.jpg">
+    <title>Wings.in</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+        function preview() {
+            prev.src=URL.createObjectURL(event.target.files[0]);
+        }
+
+        $(document).ready(function(){
+
+            $("#btnSearch").click(function(){
+                let email=$("#txtEmail").val();
+
+                let obj={
+                    type:"get",
+                    url:"/search-User",
+                    data:{
+                        txtEmail:email
+                    }
+                }
+
+                $.ajax(obj).done(function(responseArray){
+                    alert(responseArray);
+                }).fail(function(err){
+                    alert("Server Error:"+err.message);
+                })
+            })
+        });
+    </script>
+</head>
+<body style="background-color: gainsboro;">
+    <div style="background-color: rgb(3, 3, 23);font-family:'Times New Roman', Times, serif; font-size: 25px;margin: auto; display: flex; color: white;">
+    <nav class="navbar">
+      <b><img src="./Album/wings.avif" alt="" style="margin-left: 10px; width: 40px; height: 40px;"> Wings</b>
+      </nav>
+    </div>
+    <form class="row g-3" style="padding: 15px 15px 15px 15px;" method="post" enctype="multipart/form-data">
+        <div>
+            <center><h1>Organizer's Profile</h1></center>
+        </div>
+        
+        <div class="col-md-12">
+            <label for="txtEmail" class="form-label">Email address</label>
+            <div style="display: flex;">
+            <input type="email" class="form-control" id="txtEmail" name="txtEmail" placeholder="name@example.com">
+            <button type="button" class="btn btn-success" style="margin-left: 20px; width: 100px;" id="btnSearch">Search</button>
+            </div>
+        </div>
+        <div class="col-md-6">
+          <label for="txtOrganization" class="form-label">Organization</label>
+          <input type="text" class="form-control" id="txtOrganization" name="txtOrganization">
+        </div>
+        <div class="col-6">
+          <label for="txtContact" class="form-label">Contact Number</label>
+          <input type="text" class="form-control" id="txtContact" name="txtContact" >
+        </div>
+        <div class="col-12">
+          <label for="txtAdd" class="form-label">Address</label>
+          <input type="text" class="form-control" id="txtAdd" name="txtAdd" placeholder="Apartment, studio, or floor">
+        </div>
+        <div class="col-md-6">
+          <label for="txtCity" class="form-label">City</label>
+          <input type="text" class="form-control" id="txtCity" name="txtCity">
+        </div>
+        <div class="col-md-2">
+            Id Proof
+            <div>
+              <select id="txtId" name="txtId">
+                  <option value="none">Select</option>
+                  <option value="Aadhar Card">Aadhar-card</option>
+                  <option value="Registeration Id">Registeration-Id</option>
+              </select>
+            </div>
+          </div>
+        <div class="col-md-4">
+            Upload Profile Picture:
+            <div style="display: flex;margin-top: 12px;">
+            <input type="file" onchange="preview()" id="profilepic" name="profilepic" accept="image/*">
+            <img src="" id="prev" alt="" width="100" height="100">
+            </div>
+        </div>
+        <div class="col-md-2">
+            Deals With:
+            <div style="margin-top:9px;">
+            <select multiple size="4" id="txtDealsWith" name="txtDealsWith">
+                <option value="none" disabled>Select</option>
+                <option value="Football">Football</option>
+                <option value="Cricket">Cricket</option>
+                <option value="Hockey">Hockey</option>
+                <option value="Badminton">Badminton</option>
+                <option value="Tennis">Tennis</option>
+            </select>
+            </div>
+        </div>
+        <div class="col-md-10">
+            <label for="txtPrevEvents" class="form-label">Renowned Events Organized (If any)</label>
+            <textarea class="form-control" id="txtPrevEvents" name="txtPrevEvents" rows="3"></textarea>
+          </div>
+          <div class="col-md-6">
+            <label for="txtSocialMedia" class="form-label">Social Media Handler</label>
+            <input type="text" class="form-control" id="txtSocialMedia" name="txtSocialMedia">
+          </div>
+          <div class="col-md-6">
+            <label for="txtWebsite" class="form-label">Reference Website(If any)</label>
+            <input type="text" class="form-control" id="txtWebsite" name="txtWebsite">
+          </div>
+        </div>
+        <div class="col-6">
+          <button type="submit" class="btn btn-primary" formaction="/saveOrganizer">Save</button>
+        </div>
+        <div class="col-6">
+            <button type="submit" class="btn btn-primary" formaction="/updateOrganizer">Update</button>
+          </div>
+      </form>
+</body>
+</html>

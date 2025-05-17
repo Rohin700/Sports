@@ -1,0 +1,185 @@
+.navlinks{
+    width:40%;
+    height: 40px;
+    gap: 20px;
+}
+
+.navlinks a{
+    opacity: 1;
+}
+
+.navlinks a:hover{
+    opacity: 0.5;
+}
+
+#sgnupbtn{
+   border-width: 2px;
+    margin-left: 20px;
+    border: 0px;
+    color: white;
+}
+
+#lgnbtn{
+    border-width: 2px;
+    border: 0px;
+    color: white;
+}
+
+#lgnbtn:hover{
+    border: 1px white solid;
+    background-color: rgb(3, 3, 23) ;
+}
+
+#tglbtn{
+    opacity: 1;
+}
+
+#tglbtn:hover{
+    opacity: 0.5;
+}
+
+#sgnupbtn:hover{
+    border: 1px white solid;
+    background-color: rgb(3, 3, 23) ;
+}
+/* 
+.card-title{
+    padding: 15px 3px 3px 10px;
+} */
+/* 
+.card-text{
+    padding: 15px 3px 3px 10px;
+} */
+
+.card .card-img-overlay {
+    pointer-events: none; /* Prevent overlay from blocking clicks */
+  }
+
+.card{
+    margin-top: 20px;margin-bottom: 20px;margin-left: 20px;margin-right: 20px;
+    padding: 5px 5px 5px 20px;
+}
+
+.aaa :hover{
+    overflow: hidden;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.5);
+}
+
+.card-container{
+    display: flex;/* Enable Flexbox */
+    justify-content: space-between; /* Distribute the cards evenly with space in between */
+    gap: 10px;
+}
+
+
+#pcard1{
+    width: 97%; height:300px; 
+}
+
+#pcard2{
+width: 60%; height:400px;
+}
+
+
+#pcard3{
+    width: 33%; height:600px;
+}
+
+.success{
+    color: green;
+}
+
+.danger{
+    color: red;
+}
+
+.srvc{
+    height: 50px; width: 100%; background-color:rgb(3, 3, 23);
+    color: white;
+}
+
+footer{
+    background-color: #111;
+}
+
+.footer-container{
+    width: 100%;
+    padding: 30px 30px 20px;
+}
+
+.footer-icons{
+    display: flex;
+    justify-content: center;
+}
+
+.footer-icons a{
+    text-decoration: none;
+    background-color: white;
+    padding: 10px;
+    margin: 10px;
+    border-radius:50% ;   
+}
+i{
+    border-radius: 100%;
+}
+
+.footer-icons a i{
+    font-size: 2em;
+    color: black;
+    opacity: 0.9;
+}
+
+.footer-icons a:hover{
+    background-color: #111;
+    transition: 0.5s;
+}
+
+.footer-icons a:hover i{
+    background-color: white;
+    transition: 0.5s;
+}
+
+.footer-nav{
+    margin: 36px 0;
+}
+
+.footer-nav ul{
+    display: flex;
+    justify-content: center;
+}
+
+.footer-nav ul li a{
+    color: white;
+    font-size: 1.3em;
+    margin: 20px;
+    opacity: 0.7;
+    transition: 0.5s;
+}
+
+.footer-nav ul li a:hover{
+    opacity: 1;
+}
+
+.footer-bottom{
+    text-align: center;
+    background-color: #100;
+    padding: 10px;
+}
+
+.footer-bottom p{
+    color: white;
+}
+
+.designer{
+    opacity: 0.7;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin: 0 5px;
+}
+
+
+
+

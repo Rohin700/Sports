@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <!-- icon -->
+  <link rel="icon" href="https://img.freepik.com/premium-vector/wing-icon_861234-2160.jpg">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" integrity="sha384-dpuaG1suU0eT09tx5plTaGMLBsfDLzUCCUXOY2j/LSvXYuG6Bqs43ALlhIqAJVRb" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./styling/hello.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <title>Wings.in</title>
+
+    <script>
+      $(document).ready(function(){
+
+        $("#btnlogout").click(function(){
+          localStorage.removeItem("activeuser");
+          location.href="index.html";
+        })
+
+        $("#btnpprof").click(function(){
+          location.href="profilePlayer.html";
+        })
+
+        $("#btnftour").click(function(){
+          alert("Helo");
+          location.href="tournament-finder.html";
+        })
+      })
+    </script>
+
+  </head>
+  <body style="background-color: gainsboro;">
+    <div>
+    <div style="background-color: rgb(3, 3, 23);font-family:'Times New Roman', Times, serif; font-size: 25px;margin: auto; display: flex; color: white;">
+      <nav class="navbar">
+        <b><img src="./Album/wings.avif" alt="" style="margin-left: 10px; width: 40px; height: 40px;"> Wings</b>
+        </nav>
+      </div>
+    <!-- Bigger card or top-most card -->
+    <div class="card text-bg-dark" id="pcard1" class="card" >
+      <marquee behavior="alternate" direction="left" scrollamount="30" >
+        <img src="./Album/player1.jpg" alt="" style="height: 400px;">
+        <img src="./Album/p2.jpg" alt="" style="height: 400px;">
+        <img src="./Album/p3.jpg" alt="" style="height: 400px;">
+        <img src="./Album/p4.jpg" alt="" style="height: 400px;">
+      </marquee>
+        <div class="card-img-overlay">
+          <h5 class="card-title">Player Profile</h5>
+          <p class="card-text"><small>Last updated 3 mins ago</small></p>
+        </div>
+          <div>
+              <input type="button" id="btnpprof" name="btnpprof" value="Player Profile" style="width: 100%; height: 30px; border: 1px black solid; justify-content: center; font-weight: bolder;">
+          </div>
+      </div>
+
+    <div class="card-container">
+
+      <div class="card text-bg-dark" id="pcard2" class="card" style="width: 1100px;">
+        <marquee behavior="alternate" direction="left" scrollamount="30" >
+          <img src="./Album/tour1.jpg" alt="" style="height: 370px;">
+          <img src="./Album/tour2.jpg" alt="" style="height: 370px;">
+          <img src="./Album/tour3.jpg" alt="" style="height: 370px;">
+          <img src="./Album/tour5.jpg" alt="" style="height: 370px;">
+        </marquee>
+        <div class="card-img-overlay">
+          <h5 class="card-title">Find A Tournament</h5>
+          <p class="card-text"><small>Last updated 3 mins ago</small></p>
+        </div>
+        <div>
+          <input type="button" id="btnftour" name="btnftour" value="Find Tournament" style="width: 100%; height: 30px; border: 1px black solid; justify-content: center; font-weight: bolder;">
+        </div>
+      </div>
+      
+      <div class="card text-bg-dark" id="pcard3" class="card" style="height: 400px; width: 280px;">
+        <img src="./Album/logout.jpg" class="card-img" alt="..." style="width: 256px;">
+        <div>
+          <input type="button" id="btnlogout" name="btnlogout" value="LogOut" style="width: 100%; height: 30px; border: 1px black solid; justify-content: center; font-weight: bolder;">
+        </div>
+      </div>
+
+    </div>
+  </div>
+  </body>
+</html>
