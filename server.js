@@ -141,7 +141,8 @@ aapp.get("/profileOrganizer",function(req,resp){
     console.log("Organizer Profile"+path);
  })    
 
-aapp.use(express.urlencoded({encoded:true}));
+// aapp.use(express.urlencoded({encoded:true}));
+aapp.use(express.urlencoded({extended:true}));
 
 var fileuploader=require("express-fileupload");
 aapp.use(fileuploader());
