@@ -54,23 +54,52 @@ aapp.get("/signup",function(req,resp){
     })
 });
 
-aapp.get("/login",function(req,resp){
-    var email=req.query.txtMailL;
-    var pwd=req.query.txtPwdL;
+// aapp.get("/login",function(req,resp){
+//     var email=req.query.txtMailL;
+//     var pwd=req.query.txtPwdL;
 
-    mysqlServer.query("select * from logginn where email=?",[email],function(err,jsonArray){
-        // resp.send(jsonArray)
-        console.log(jsonArray);
+//     mysqlServer.query("select * from logginn where email=?",[email],function(err,jsonArray){
+//         // resp.send(jsonArray)
+//         console.log(jsonArray);
 
-        if(jsonArray.length==1){
-            resp.send(jsonArray[0]["utype"]);
-            console.log(jsonArray[0]["status"]);
+//         if(jsonArray.length==1){
+//             resp.send(jsonArray[0]["utype"]);
+//             console.log(jsonArray[0]["status"]);
+//         }
+//         else{
+//             resp.send(err.message);
+//         }
+//     })
+//  })
+
+aapp.get("/login", function(req, resp) {
+    var email = req.query.txtMailL;
+    var pwd = req.query.txtPwdL;
+
+    mysqlServer.query("SELECT * FROM logginn WHERE email=?", [email], function(err, jsonArray) {
+        if (err) {
+            console.error("DB Error:", err.message);
+            resp.status(500).send("Database error");
+            return;
         }
-        else{
-            resp.send(err.message);
+
+        if (!jsonArray || jsonArray.length === 0) {
+            resp.status(401).send("Invalid email or user not found");
+            return;
         }
-    })
- })
+
+        // Optional: Check password match manually here
+        if (jsonArray[0].pwd !== pwd) {
+            resp.status(401).send("Invalid password");
+            return;
+        }
+
+        // Login successful
+        resp.send(jsonArray[0].utype); // Or set session/cookie etc.
+        console.log("User status:", jsonArray[0].status);
+    });
+});
+
 
  aapp.get("/checkUser",function(req,resp){
     var email=req.query.txtMail;
