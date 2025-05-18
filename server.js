@@ -21,19 +21,31 @@ var config ={
     user : "uguiqzjho3fys1yu",
     password : "VGkUdNk8EerUSh3Wtior",
     database : "bmxtb822hpbswmeip3sb",
-    dataStrings : true,
-    keepAliveDelay : 10000,
-    enableKeepAlive : true,
-}
+    connectionLimit : 10
+    // dataStrings : true,
+    // keepAliveDelay : 10000,
+    // enableKeepAlive : true,
+};
 
-var mysqlServer=mysql2.createConnection(config);
+// var mysqlServer=mysql2.createConnection(config);
 
-mysqlServer.connect(function(err){
-    if(err == null){
-        console.log("Congratulations Connection Established");
-    }
-    else{
-        console.log("Connection failed"+err.message);
+// mysqlServer.connect(function(err){
+//     if(err == null){
+//         console.log("Congratulations Connection Established");
+//     }
+//     else{
+//         console.log("Connection failed"+err.message);
+//     }
+// });
+
+var mysqlServer=mysql2.createPool(config);
+
+mysqlServer.getConnection(function(err, connection) {
+    if (err) {
+        console.log("Connection failed: " + err.message);
+    } else {
+        console.log("Congratulations! Connection Established");
+        connection.release(); // Make sure to release the connection back to the pool
     }
 });
 
@@ -200,16 +212,18 @@ aapp.post("/saveOrganizer",async function(req,resp){
 
 aapp.post("/updateOrganizer",async function(req,resp){
     let filename="";
+    if (req.files && req.files.profilepic) {
         filename=req.files.profilepic.name;
         let path=__dirname+"/public/uploads/"+filename;
         req.files.profilepic.mv(path);
         try{
-        await cloudinary.uploader.upload(path).then(function(result){
+            await cloudinary.uploader.upload(path).then(function(result){
             filename=result.url;
-        })
-    }
-    catch(err){
-        console.log("Err is:"+err.message);
+            })
+        }
+        catch(err){
+            console.log("Err is:"+err.message);
+        }
     }
     
     req.body.picpath=filename;
@@ -403,7 +417,7 @@ aapp.post("/save-player-profile",function(req,resp){
 })
 
 aapp.post("/update-player-profile",function(req,resp){
-    mysqlServer.query("update players set name=?, games=?, mobile=?, dob=?, genderaddress=?, city=?, idproof=?, otherinfo=? where email=?",
+    mysqlServer.query("update players set name=?, games=?, mobile=?, dob=?, gender=?, address=?, city=?, idproof=?, otherinfo=? where email=?",
     [
         req.body.txtName,
         req.body.txtGame,
