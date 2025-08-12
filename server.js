@@ -314,19 +314,20 @@ aapp.post("/saveTournament",async function(req,resp){
     }
     req.body.picpath=filename;
 
-    mysqlServer.query("insert into tournaments values(?,?,?,?,?,?,?,?,?,?)",
-        [
-        req.body.txtEmail,
-        req.body.game,
-        req.body.title,
-        req.body.fee,
-        req.body.date,
-        req.body.city,
-        req.body.location,
-        req.body.prize,
-        req.body.picpath,
-        req.body.txtArea
-    ],
+    mysqlServer.query(
+  "INSERT INTO tournaments (emailid, game, title, fee, dot, city, location, prizes, poster, info) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+  [
+    req.body.txtEmail,
+    req.body.game,
+    req.body.title,
+    req.body.fee,
+    req.body.date,     
+    req.body.city,
+    req.body.location,
+    req.body.prize,
+    req.body.picpath,
+    req.body.txtArea
+  ],
     function(err){
         if(err==null)
             resp.send("Tournament Published Successfully with Id="+req.body.txtEmail);
