@@ -314,9 +314,8 @@ aapp.post("/saveTournament",async function(req,resp){
     }
     req.body.picpath=filename;
 
-    mysqlServer.query("insert into tournaments values(?,?,?,?,?,?,?,?,?,?,?)",
+    mysqlServer.query("insert into tournaments values(?,?,?,?,?,?,?,?,?,?)",
         [
-        null,
         req.body.txtEmail,
         req.body.game,
         req.body.title,
